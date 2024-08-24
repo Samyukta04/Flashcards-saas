@@ -29,5 +29,14 @@ setFlipped((prev) => ({
   setOpenI(false)
   }
 
+  const save Flashcards = async () =>{
+  if(!name){
+  alert('Please enter a name'),
+    return
+  }
+
+    
+  }
+
   
 }
