@@ -3,14 +3,27 @@
 import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 //import (use, useEffect, useState) from 'react' 
-import {db} from '@/firebase'
-import {doc, collection, setDoc, getDoc, writeBatch} from 'firebase/firestore'
+import { db } from '@/firebase'
+import { doc, collection, setDoc, getDoc, writeBatch } from 'firebase/firestore'
 import {
   Container,
   TextField,
   Button,
   Typography,
   Box,
+  Card,
+  CardActionArea,
+  CardContent,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
 } from '@mui/material'
 
 export default function Generate() {

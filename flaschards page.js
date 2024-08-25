@@ -1,7 +1,7 @@
 'use client'
 import { useUser } from '@clerk/nextjs'
-//import (use, useEffect, useState) from 'react' 
-// import(collection, doc, getDoc, setDoc) from 'firebase/firestore'
+import {useEffect, useState } from "react"
+import {collection,doc, getDoc, setDoc} from "firebase/firestore"
 import { db } from '@/firebase'
 import { useRouter } from 'next/navigation'
 
@@ -24,6 +24,8 @@ export default function Flaschards() {
         }
         getFlashcards()
     }, [user])
+
+
     if (!isLoaded || !isSignedIn) {
         return <></>
     }
@@ -40,7 +42,7 @@ export default function Flaschards() {
                     <Card>
                         <CardActionArea
                             onClick={() => {
-                                handleCardClick(id)
+                                handleCardClick(flashcard.name)
                             }}
                         >
                             <CardContent>

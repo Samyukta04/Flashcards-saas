@@ -5,6 +5,26 @@ import Head from "next/head"
 import { AppBar, Button, Toolbar, Typography, Container, Box, Grid } from "@mui/material"
 
 export default function Home() {
+  const handleSubmit = async()=>{
+    const checkoutSection = await fetch('/api/checkout_session', {
+    method: 'POST',
+    headers: {
+      origin: 'http://localhost:3000' // must be changed ONCE DEPLOYED
+    },
+  })
+  const checkoutSessionJson = await checkoutSession.json()
+  if (checkoutSession.statusCode === 500){
+    console.error(checkoutSession.message)
+    return 
+  }
+  const stripe = await getStripe()
+  const {error} = await stripe.redirectToCheckout({
+    sessionId: checkoutSessionJson.id
+  })
+  if (error){
+    console.warn(error.message)
+  }
+}
   return (
     <Container maxwidth='100v'>
       <Head>
@@ -127,7 +147,7 @@ export default function Home() {
                 {' '}
               Access to unlimited flashcard features and storage with priority support .
             </Typography>
-             <Button variant = "contanied" color = "primary">
+             <Button variant = "contanied" color = "primary" sx = {{mt: 2}} onClick= {handleSubmit}>
                 Choose pro
                 </Button>
             </Box>
